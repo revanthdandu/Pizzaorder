@@ -1,0 +1,890 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+class MyFrame extends JFrame implements ActionListener
+{
+static int total1=0;
+static int total2=0;
+static int total3=0;
+static String c1="";
+static String c2="";
+static String c3="";
+static String c4="";
+static String c5="";
+static String pa1="";
+static String pa2="";
+static String pa3="";
+static String pa4="";
+static String pa5="";
+static String co1="";
+static String co2="";
+static String co3="";
+static String co4="";
+static String co5="";
+static String o1="";
+static String o2="";
+static String o3="";
+static String o4="";
+static String o5="";
+Container c;
+JLabel title;
+JLabel tname;
+JLabel piz1;
+JLabel piz2;
+JLabel piz3;
+JLabel piz4;
+JLabel piz5;
+JLabel ptitle,etitle;
+JLabel dtitle,ttitle;
+JComboBox pizza1;
+JComboBox pizza2;
+JComboBox pizza3;
+JComboBox pizza4;
+JComboBox pizza5;
+JComboBox drink1,drink2,drink3,drink4,drink5;
+JCheckBox cheese1,cheese2,cheese3,cheese4,cheese5;
+JCheckBox paneer1,paneer2,paneer3,paneer4,paneer5;
+JCheckBox corn1,corn2,corn3,corn4,corn5;
+JCheckBox onion1,onion2,onion3,onion4,onion5;
+JButton sub,reset,cal;
+ JTextArea total;
+
+String pizzas[]=
+{
+"--",
+"Hawaiian",
+"Meat Lovers",
+"Pepperoni",
+"Ham & Cheese",
+"Classic Cheese",
+"Veg Hot 'n' Spicy",
+"Beef & Onion",
+"Seafood Deluxe",
+"Summer Shrimp",
+"BBQ Bacon & Mushroom"
+};
+
+private String drinks[]=
+{
+"--",
+"pepsi",
+"7-up",
+"Choco milkshake",
+"thumbs up",
+"sting"
+};
+
+public MyFrame()
+{
+setTitle("PIZZAFI");
+setBounds(300,90,900,600);
+setDefaultCloseOperation(EXIT_ON_CLOSE);
+setResizable(false);
+
+c=getContentPane();
+c.setLayout(null);
+
+title=new JLabel("BILLING");
+title.setFont(new Font("Arial",Font.PLAIN,30));
+title.setSize(350, 30); 
+title.setLocation(350, 30);
+c.add(title);
+
+ptitle=new JLabel("PIZZAS:");
+ptitle.setFont(new Font("Arial",Font.PLAIN,30));
+ptitle.setSize(150,30); 
+ptitle.setLocation(30,80);
+c.add(ptitle);
+
+etitle=new JLabel("EXTRAS:");
+etitle.setFont(new Font("Arial",Font.PLAIN,30));
+etitle.setSize(150,30); 
+etitle.setLocation(630,80);
+c.add(etitle);
+
+dtitle=new JLabel("DRINKS:");
+dtitle.setFont(new Font("Arial",Font.PLAIN,30));
+dtitle.setSize(150,30); 
+dtitle.setLocation(350,80);
+c.add(dtitle);
+
+ttitle=new JLabel("TOTAL:");
+ttitle.setFont(new Font("Arial",Font.PLAIN,30));
+ttitle.setSize(150,30); 
+ttitle.setLocation(30,450);
+c.add(ttitle);
+
+piz1=new JLabel("PIZZA-1");
+piz1.setFont(new Font("Arial",Font.PLAIN,20));
+piz1.setSize(100,20);
+piz1.setLocation(30,150);
+c.add(piz1);
+
+pizza1=new JComboBox(pizzas);
+pizza1.setFont(new Font("Arial",Font.PLAIN,15));
+pizza1.setSize(180,25);
+pizza1.setLocation(130,150);
+c.add(pizza1);
+
+drink1=new JComboBox(drinks);
+drink1.setFont(new Font("Arial",Font.PLAIN,15));
+drink1.setSize(100,25);
+drink1.setLocation(360,150);
+c.add(drink1);
+
+cheese1=new JCheckBox("cheese");
+cheese1.setFont(new Font("Arial",Font.PLAIN,15));
+cheese1.setSize(90,20);
+cheese1.setLocation(500,150);
+cheese1.addActionListener(this);
+c.add(cheese1);
+
+paneer1=new JCheckBox("paneer");
+paneer1.setFont(new Font("Arial",Font.PLAIN,15));
+paneer1.setSize(90,20);
+paneer1.setLocation(600,150);
+paneer1.addActionListener(this);
+c.add(paneer1);
+
+corn1=new JCheckBox("corn");
+corn1.setFont(new Font("Arial",Font.PLAIN,15));
+corn1.setSize(90,20);
+corn1.setLocation(700,150);
+corn1.addActionListener(this);
+c.add(corn1);
+
+onion1=new JCheckBox("onion");
+onion1.setFont(new Font("Arial",Font.PLAIN,15));
+onion1.setSize(90,20);
+onion1.setLocation(800,150);
+onion1.addActionListener(this);
+c.add(onion1);
+
+
+piz2=new JLabel("PIZZA-2");
+piz2.setFont(new Font("Arial",Font.PLAIN,20));
+piz2.setSize(100,20);
+piz2.setLocation(30,200);
+c.add(piz2);
+
+pizza2=new JComboBox(pizzas);
+pizza2.setFont(new Font("Arial",Font.PLAIN,15));
+pizza2.setSize(180,25);
+pizza2.setLocation(130,200);
+c.add(pizza2);
+
+drink2=new JComboBox(drinks);
+drink2.setFont(new Font("Arial",Font.PLAIN,15));
+drink2.setSize(100,25);
+drink2.setLocation(360,200);
+c.add(drink2);
+
+cheese2=new JCheckBox("cheese");
+cheese2.setFont(new Font("Arial",Font.PLAIN,15));
+cheese2.setSize(90,20);
+cheese2.setLocation(500,200);
+cheese2.addActionListener(this);
+c.add(cheese2);
+
+paneer2=new JCheckBox("paneer");
+paneer2.setFont(new Font("Arial",Font.PLAIN,15));
+paneer2.setSize(90,20);
+paneer2.setLocation(600,200);
+paneer2.addActionListener(this);
+c.add(paneer2);
+
+corn2=new JCheckBox("corn");
+corn2.setFont(new Font("Arial",Font.PLAIN,15));
+corn2.setSize(90,20);
+corn2.setLocation(700,200);
+corn2.addActionListener(this);
+c.add(corn2);
+
+onion2=new JCheckBox("onion");
+onion2.setFont(new Font("Arial",Font.PLAIN,15));
+onion2.setSize(90,20);
+onion2.setLocation(800,200);
+onion2.addActionListener(this);
+c.add(onion2);
+
+piz3=new JLabel("PIZZA-3");
+piz3.setFont(new Font("Arial",Font.PLAIN,20));
+piz3.setSize(100,20);
+piz3.setLocation(30,250);
+c.add(piz3);
+
+pizza3=new JComboBox(pizzas);
+pizza3.setFont(new Font("Arial",Font.PLAIN,15));
+pizza3.setSize(180,25);
+pizza3.setLocation(130,250);
+c.add(pizza3);
+
+drink3=new JComboBox(drinks);
+drink3.setFont(new Font("Arial",Font.PLAIN,15));
+drink3.setSize(100,25);
+drink3.setLocation(360,250);
+c.add(drink3);
+
+
+cheese3=new JCheckBox("cheese");
+cheese3.setFont(new Font("Arial",Font.PLAIN,15));
+cheese3.setSize(90,20);
+cheese3.setLocation(500,250);
+cheese3.addActionListener(this);
+c.add(cheese3);
+
+paneer3=new JCheckBox("paneer");
+paneer3.setFont(new Font("Arial",Font.PLAIN,15));
+paneer3.setSize(90,20);
+paneer3.setLocation(600,250);
+paneer3.addActionListener(this);
+c.add(paneer3);
+
+corn3=new JCheckBox("corn");
+corn3.setFont(new Font("Arial",Font.PLAIN,15));
+corn3.setSize(90,20);
+corn3.setLocation(700,250);
+corn3.addActionListener(this);
+c.add(corn3);
+
+onion3=new JCheckBox("onion");
+onion3.setFont(new Font("Arial",Font.PLAIN,15));
+onion3.setSize(90,20);
+onion3.setLocation(800,250);
+onion3.addActionListener(this);
+c.add(onion3);
+
+piz4=new JLabel("PIZZA-4");
+piz4.setFont(new Font("Arial",Font.PLAIN,20));
+piz4.setSize(100,20);
+piz4.setLocation(30,300);
+c.add(piz4);
+
+pizza4=new JComboBox(pizzas);
+pizza4.setFont(new Font("Arial",Font.PLAIN,15));
+pizza4.setSize(180,25);
+pizza4.setLocation(130,300);
+c.add(pizza4);
+
+drink4=new JComboBox(drinks);
+drink4.setFont(new Font("Arial",Font.PLAIN,15));
+drink4.setSize(100,25);
+drink4.setLocation(360,300);
+c.add(drink4);
+
+cheese4=new JCheckBox("cheese");
+cheese4.setFont(new Font("Arial",Font.PLAIN,15));
+cheese4.setSize(90,20);
+cheese4.setLocation(500,300);
+cheese4.addActionListener(this);
+c.add(cheese4);
+
+paneer4=new JCheckBox("paneer");
+paneer4.setFont(new Font("Arial",Font.PLAIN,15));
+paneer4.setSize(90,20);
+paneer4.setLocation(600,300);
+paneer4.addActionListener(this);
+c.add(paneer4);
+
+corn4=new JCheckBox("corn");
+corn4.setFont(new Font("Arial",Font.PLAIN,15));
+corn4.setSize(90,20);
+corn4.setLocation(700,300);
+corn4.addActionListener(this);
+c.add(corn4);
+
+onion4=new JCheckBox("onion");
+onion4.setFont(new Font("Arial",Font.PLAIN,15));
+onion4.setSize(90,20);
+onion4.setLocation(800,300);
+onion4.addActionListener(this);
+c.add(onion4);
+
+
+piz5=new JLabel("PIZZA-5");
+piz5.setFont(new Font("Arial",Font.PLAIN,20));
+piz5.setSize(100,20);
+piz5.setLocation(30,350);
+c.add(piz5);
+
+pizza5=new JComboBox(pizzas);
+pizza5.setFont(new Font("Arial",Font.PLAIN,15));
+pizza5.setSize(180,25);
+pizza5.setLocation(130,350);
+c.add(pizza5);
+
+drink5=new JComboBox(drinks);
+drink5.setFont(new Font("Arial",Font.PLAIN,15));
+drink5.setSize(100,25);
+drink5.setLocation(360,350);
+c.add(drink5);
+
+cheese5=new JCheckBox("cheese");
+cheese5.setFont(new Font("Arial",Font.PLAIN,15));
+cheese5.setSize(90,20);
+cheese5.setLocation(500,350);
+cheese5.addActionListener(this);
+c.add(cheese5);
+
+paneer5=new JCheckBox("paneer");
+paneer5.setFont(new Font("Arial",Font.PLAIN,15));
+paneer5.setSize(90,20);
+paneer5.setLocation(600,350);
+paneer5.addActionListener(this);
+c.add(paneer5);
+
+corn5=new JCheckBox("corn");
+corn5.setFont(new Font("Arial",Font.PLAIN,15));
+corn5.setSize(90,20);
+corn5.setLocation(700,350);
+corn5.addActionListener(this);
+c.add(corn5);
+
+onion5=new JCheckBox("onion");
+onion5.setFont(new Font("Arial",Font.PLAIN,15));
+onion5.setSize(90,20);
+onion5.setLocation(800,350);
+onion5.addActionListener(this);
+c.add(onion5);
+
+sub = new JButton("OK"); 
+sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
+sub.setSize(100,20); 
+sub.setLocation(745,525); 
+sub.addActionListener(this); 
+c.add(sub);
+
+reset= new JButton("reset"); 
+reset.setFont(new Font("Arial", Font.PLAIN, 15)); 
+reset.setSize(100,20); 
+reset.setLocation(620,525); 
+reset.addActionListener(this); 
+c.add(reset);
+
+cal= new JButton("cal"); 
+cal.setFont(new Font("Arial", Font.PLAIN, 15)); 
+cal.setSize(100,20); 
+cal.setLocation(500,450); 
+cal.addActionListener(this); 
+c.add(cal);
+
+total= new JTextArea(); 
+total.setFont(new Font("Arial", Font.PLAIN, 35)); 
+total.setSize(150,45); 
+total.setLocation(170,443); 
+total.setLineWrap(true); 
+total.setEditable(true); 
+c.add(total); 
+
+pizza1.addActionListener(this);
+pizza2.addActionListener(this);
+pizza3.addActionListener(this);
+pizza4.addActionListener(this);
+pizza5.addActionListener(this);
+drink1.addActionListener(this);
+drink2.addActionListener(this);
+drink3.addActionListener(this);
+drink4.addActionListener(this);
+drink5.addActionListener(this);
+
+setVisible(true);
+}
+
+
+public void actionPerformed(ActionEvent e)
+{
+
+if(e.getSource()==reset)
+{
+pizza1.setSelectedIndex(0); 
+pizza2.setSelectedIndex(0);
+pizza3.setSelectedIndex(0);
+pizza4.setSelectedIndex(0);
+pizza5.setSelectedIndex(0);
+drink1.setSelectedIndex(0);
+drink2.setSelectedIndex(0);
+drink3.setSelectedIndex(0);
+drink4.setSelectedIndex(0);
+drink5.setSelectedIndex(0);
+cheese1.setSelected(false);
+cheese2.setSelected(false);
+cheese3.setSelected(false);
+cheese4.setSelected(false);
+cheese5.setSelected(false);
+paneer1.setSelected(false);
+paneer2.setSelected(false);
+paneer3.setSelected(false);
+paneer4.setSelected(false);
+paneer5.setSelected(false);
+corn1.setSelected(false);
+corn2.setSelected(false);
+corn3.setSelected(false);
+corn4.setSelected(false);
+corn5.setSelected(false);
+onion1.setSelected(false);
+onion2.setSelected(false);
+onion3.setSelected(false);
+onion4.setSelected(false);
+onion5.setSelected(false);
+total1=total1*0;
+total2=total2*0;
+total3=total3*0;
+total.setText(""+0);
+}
+
+
+if(e.getSource()==pizza1)
+{
+
+if(pizza1.getSelectedIndex()==1)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==2)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==3)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==4)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==5)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==6)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==7)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==8)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==9)
+{total1=total1+11;}
+if(pizza1.getSelectedIndex()==10)
+{total1=total1+11;}
+}
+
+if(e.getSource()==pizza2)
+{
+if(pizza2.getSelectedIndex()==1)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==2)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==3)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==4)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==5)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==6)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==7)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==8)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==9)
+{total1=total1+11;}
+if(pizza2.getSelectedIndex()==10)
+{total1=total1+11;}
+}
+
+if(e.getSource()==pizza3)
+{
+if(pizza3.getSelectedIndex()==1)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==2)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==3)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==4)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==5)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==6)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==7)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==8)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==9)
+{total1=total1+11;}
+if(pizza3.getSelectedIndex()==10)
+{total1=total1+11;}
+}
+
+if(e.getSource()==pizza4)
+{
+if(pizza4.getSelectedIndex()==1)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==2)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==3)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==4)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==5)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==6)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==7)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==8)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==9)
+{total1=total1+11;}
+if(pizza4.getSelectedIndex()==10)
+{total1=total1+11;}
+}
+
+if(e.getSource()==pizza5)
+{
+if(pizza5.getSelectedIndex()==1)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==2)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==3)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==4)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==5)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==6)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==7)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==8)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==9)
+{total1=total1+11;}
+if(pizza5.getSelectedIndex()==10)
+{total1=total1+11;}
+}
+
+if(e.getSource()==drink1)
+{
+if(drink1.getSelectedIndex()==1)
+{total1=total1+70;}
+if(drink1.getSelectedIndex()==2)
+{total1=total1+70;}
+if(drink1.getSelectedIndex()==3)
+{total1=total1+70;}
+if(drink1.getSelectedIndex()==4)
+{total1=total1+70;}
+if(drink1.getSelectedIndex()==5)
+{total1=total1+70;}
+}
+
+if(e.getSource()==drink2)
+{
+if(drink2.getSelectedIndex()==1)
+{total1=total1+70;}
+if(drink2.getSelectedIndex()==2)
+{total1=total1+70;}
+if(drink2.getSelectedIndex()==3)
+{total1=total1+70;}
+if(drink2.getSelectedIndex()==4)
+{total1=total1+70;}
+if(drink2.getSelectedIndex()==5)
+{total1=total1+70;}
+}
+
+
+if(e.getSource()==drink3)
+{
+if(drink3.getSelectedIndex()==1)
+{total1=total1+70;}
+if(drink3.getSelectedIndex()==2)
+{total1=total1+70;}
+if(drink3.getSelectedIndex()==3)
+{total1=total1+70;}
+if(drink3.getSelectedIndex()==4)
+{total1=total1+70;}
+if(drink3.getSelectedIndex()==5)
+{total1=total1+70;}
+}
+
+if(e.getSource()==drink4)
+{
+if(drink4.getSelectedIndex()==1)
+{total1=total1+70;}
+if(drink4.getSelectedIndex()==2)
+{total1=total1+70;}
+if(drink4.getSelectedIndex()==3)
+{total1=total1+70;}
+if(drink4.getSelectedIndex()==4)
+{total1=total1+70;}
+if(drink4.getSelectedIndex()==5)
+{total1=total1+70;}
+}
+
+if(e.getSource()==drink5)
+{
+if(drink5.getSelectedIndex()==1)
+{total1=total1+70;}
+if(drink5.getSelectedIndex()==2)
+{total1=total1+70;}
+if(drink5.getSelectedIndex()==3)
+{total1=total1+70;}
+if(drink5.getSelectedIndex()==4)
+{total1=total1+70;}
+if(drink5.getSelectedIndex()==5)
+{total1=total1+70;}
+}
+
+
+
+
+
+
+if(e.getSource()==cheese1)
+{if(cheese1.isSelected()){c1="-with extra cheese";total2=total2+20;}}
+if(e.getSource()==cheese2)
+{if(cheese2.isSelected()){c2="-with extra cheese ";total2=total2+20;}}
+if(e.getSource()==cheese3)
+{if(cheese3.isSelected()){c3="-with extra cheese ";total2=total2+20;}}
+if(e.getSource()==cheese4)
+{if(cheese4.isSelected()){c4="-with extra cheese ";total2=total2+20;}}
+if(e.getSource()==cheese5)
+{if(cheese5.isSelected()){c5="-with extra cheese ";total2=total2+20;}}
+
+if(e.getSource()==paneer1)
+{if(paneer1.isSelected()){pa1="-with extra paneer ";total2=total2+20;}}
+if(e.getSource()==paneer2)
+{if(paneer2.isSelected()){pa2="-with extra paneer ";total2=total2+20;}}
+if(e.getSource()==paneer3)
+{if(paneer3.isSelected()){pa3="-with extra paneer ";total2=total2+20;}}
+if(e.getSource()==paneer4)
+{if(paneer4.isSelected()){pa4="-with extra paneer ";total2=total2+20;}}
+if(e.getSource()==paneer5)
+{if(paneer5.isSelected()){pa5="-with extra paneer ";total2=total2+20;}}
+
+if(e.getSource()==corn1)
+{if(corn1.isSelected()){co1="-with extra corn ";total2=total2+20;}}
+if(e.getSource()==corn2)
+{if(corn2.isSelected()){co2="-with extra corn ";total2=total2+20;}}
+if(e.getSource()==corn3)
+{if(corn3.isSelected()){co3="-with extra corn ";total2=total2+20;}}
+if(e.getSource()==corn4)
+{if(corn4.isSelected()){co4="-with extra corn ";total2=total2+20;}}
+if(e.getSource()==corn5)
+{if(corn5.isSelected()){co5="-with extra corn ";total2=total2+20;}}
+
+if(e.getSource()==onion1)
+{if(onion1.isSelected()){o1="-with extra onions ";total2=total2+20;}}
+if(e.getSource()==onion2)
+{if(onion2.isSelected()){o2="-with extra onions ";total2=total2+20;}}
+if(e.getSource()==onion3)
+{if(onion3.isSelected()){o3="-with extra onions ";total2=total2+20;}}
+if(e.getSource()==onion4)
+{if(onion4.isSelected()){o4="-with extra onions ";total2=total2+20;}}
+if(e.getSource()==onion5)
+{if(onion5.isSelected()){o5="-with extra onions ";total2=total2+20;}}
+
+if(e.getSource()==cal){ 
+total3=total1+total2;
+total.setText(" "+total3);}
+
+String p1=pizza1.getSelectedItem().toString();
+ String p2=pizza2.getSelectedItem().toString();
+ String p3=pizza3.getSelectedItem().toString();
+ String p4=pizza4.getSelectedItem().toString();
+ String p5=pizza5.getSelectedItem().toString();
+ String d1=drink1.getSelectedItem().toString();
+ String d2=drink2.getSelectedItem().toString();
+ String d3=drink3.getSelectedItem().toString();
+ String d4=drink4.getSelectedItem().toString();
+ String d5=drink5.getSelectedItem().toString();
+String idea=p1+c1+pa1+co1+o1+"..;"+p2+c2+pa2+co2+o2+"..;"+p3+c3+pa3+co3+o3+"..;"+p4+c4+pa4+co4+o4+"..;"+p5+c5+pa5+co5+o5+","+d1+","+d2+","+d3+","+d4+","+d5+"*****************"+"TOTAL:"+total3;
+
+
+
+if(e.getSource()==sub)
+{
+NextPage page=new NextPage(idea);
+   page.setVisible(true);
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
+class Pizzaorder { 
+  
+    public static void main(String[] args) throws Exception 
+    { 
+        MyFrame f = new MyFrame(); 
+    } 
+} 
+
+class NextPage extends JFrame implements ActionListener
+ {
+JFrame frame=new JFrame();
+
+
+static int i=1;
+
+   Container c; 
+     JLabel title,otitle; 
+     JLabel name; 
+     JTextField tname; 
+     JLabel mno; 
+    JTextField tmno,ono,pp1; 
+    JLabel add; 
+    JButton sub,con; 
+    JButton reset; 
+    JTextArea tout; 
+    JLabel res; 
+    JTextArea resadd; 
+  
+
+public   NextPage(String p1)
+  {
+
+  setTitle("PIZZAFI"); 
+        setBounds(300, 90, 900, 600); 
+        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        setResizable(false); 
+  
+        c = getContentPane(); 
+        c.setLayout(null); 
+  
+        title = new JLabel("Customer Details:"); 
+        title.setFont(new Font("Arial", Font.PLAIN, 30)); 
+        title.setSize(300, 30); 
+        title.setLocation(300, 30); 
+        c.add(title); 
+  
+        name = new JLabel("Name"); 
+        name.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        name.setSize(100, 20); 
+        name.setLocation(100, 100); 
+        c.add(name); 
+  
+        tname = new JTextField(); 
+        tname.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        tname.setSize(190, 20); 
+        tname.setLocation(200, 100); 
+        c.add(tname); 
+  
+        mno = new JLabel("Mobile"); 
+        mno.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        mno.setSize(100, 20); 
+        mno.setLocation(100, 150); 
+        c.add(mno); 
+  
+        tmno = new JTextField(); 
+        tmno.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        tmno.setSize(150, 20); 
+        tmno.setLocation(200, 150); 
+        c.add(tmno); 
+
+
+pp1= new JTextField(p1); 
+pp1.setFont(new Font("Arial", Font.PLAIN, 15)); 
+pp1.setSize(150, 20); 
+pp1.setLocation(200, 150); 
+
+	sub = new JButton("confirm"); 
+        sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        sub.setSize(100, 20); 
+        sub.setLocation(150, 280); 
+        sub.addActionListener(this); 
+        c.add(sub); 
+  
+        reset = new JButton("reset"); 
+        reset.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        reset.setSize(100, 20); 
+        reset.setLocation(270, 280); 
+        reset.addActionListener(this); 
+        c.add(reset); 
+  
+	con = new JButton("cancel/nextorder"); 
+        con.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        con.setSize(200, 20); 
+        con.setLocation(270, 330); 
+        con.addActionListener(this); 
+        c.add(con);
+
+        tout = new JTextArea(); 
+        tout.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        tout.setSize(300, 400); 
+        tout.setLocation(500, 100); 
+        tout.setLineWrap(true); 
+        tout.setEditable(false); 
+        c.add(tout); 
+  
+        res = new JLabel(""); 
+        res.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        res.setSize(500, 25); 
+        res.setLocation(100, 500); 
+        c.add(res); 
+  
+        resadd = new JTextArea(); 
+        resadd.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        resadd.setSize(200, 75); 
+        resadd.setLocation(580, 175); 
+        resadd.setLineWrap(true); 
+        c.add(resadd); 
+  
+        setVisible(true); 
+    } 
+  
+ 
+    public void actionPerformed(ActionEvent e) 
+    {
+
+        if (e.getSource() == sub) { 
+    
+             
+                String data 
+                    = 
+			"ORDER NO>>"+i+"<<\n"+
+		      "Name : "
+                      + tname.getText() + "\n"
+                      + "Mobile : "
+                      + tmno.getText() + "\n"+
+		      "ORDER:\n"+pp1.getText();
+
+                
+                
+  
+               
+                tout.setText(data); 
+                tout.setEditable(false); 
+                res.setText("Order Successfully.."); 
+            
+            
+        } 
+  
+        if (e.getSource()==reset)
+ { 
+            String def = ""; 
+            tname.setText(def); 
+            tmno.setText(def); 
+            res.setText(def); 
+            tout.setText(def);   
+            resadd.setText(def); 
+            
+} 
+if(e.getSource()==con)
+{
+
+setDefaultCloseOperation(javax.swing.
+           WindowConstants.DISPOSE_ON_CLOSE);
+i++;
+dispose();
+}
+    } 
+  }
